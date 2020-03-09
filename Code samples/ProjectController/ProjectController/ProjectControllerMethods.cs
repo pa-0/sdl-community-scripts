@@ -1,10 +1,13 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using System.Linq;
 using Sdl.Desktop.IntegrationApi;
 using Sdl.Desktop.IntegrationApi.DefaultLocations;
 using Sdl.Desktop.IntegrationApi.Extensions;
+using Sdl.Desktop.IntegrationApi.Interfaces;
 using Sdl.ProjectAutomation.Settings;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
+using Sdl.TranslationStudioAutomation.IntegrationApi.Events;
 
 namespace ProjectController
 {
@@ -14,8 +17,9 @@ namespace ProjectController
 		public void Execute()
 		{
 			//files controller
-			var filesController = SdlTradosStudio.Application.GetController<FilesController>();
-			var activeProjectFromFiles = filesController.CurrentProject;
+			//var filesController = SdlTradosStudio.Application.GetController<FilesController>();
+			//var activeProjectFromFiles = filesController.CurrentProject;
+
 		}
 	}
 
@@ -33,13 +37,24 @@ namespace ProjectController
 	{
 		protected override void Execute()
 		{
-			//projects controler
+			//projects controler open file view for selected language
+			var eventAggregator = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
 			var projectsController = SdlTradosStudio.Application.GetController<ProjectsController>();
 			var activeProject = projectsController?.CurrentProject;
+			var targetLanguages = activeProject?.GetProjectInfo().TargetLanguages;
+			if (targetLanguages?.Length >= 2)
+			{
+				eventAggregator.Publish(new OpenProjectForSelectedLanguageEvent(activeProject, targetLanguages[1]));
+			}
 
-			var termbConfig = activeProject?.GetTermbaseConfiguration();
-			var tembaseSettings = termbConfig?.Termbases.FirstOrDefault()?.SettingsXML;
-			var tembase = termbConfig?.Termbases.FirstOrDefault();
+			//var language = new CultureInfo("de-de");
+			//projectsController?.Open(activeProject);
+
+			//projectsController?.Open(activeProject,language);
+
+			//var termbConfig = activeProject?.GetTermbaseConfiguration();
+			//var tembaseSettings = termbConfig?.Termbases.FirstOrDefault()?.SettingsXML;
+			//var tembase = termbConfig?.Termbases.FirstOrDefault();
 
 			// Adapting translate task settings
 			//var settings = activeProject?.GetSettings();

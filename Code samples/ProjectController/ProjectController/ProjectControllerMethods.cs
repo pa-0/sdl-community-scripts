@@ -45,32 +45,9 @@ namespace ProjectController
 			if (targetLanguages?.Length >= 2)
 			{
 				eventAggregator.Publish(new OpenProjectForSelectedLanguageEvent(activeProject, targetLanguages[1]));
+				//to open just a project without target language
+				//eventAggregator.Publish(new OpenProjectForSelectedLanguageEvent(activeProject));
 			}
-
-			//var language = new CultureInfo("de-de");
-			//projectsController?.Open(activeProject);
-
-			//projectsController?.Open(activeProject,language);
-
-			//var termbConfig = activeProject?.GetTermbaseConfiguration();
-			//var tembaseSettings = termbConfig?.Termbases.FirstOrDefault()?.SettingsXML;
-			//var tembase = termbConfig?.Termbases.FirstOrDefault();
-
-			// Adapting translate task settings
-			//var settings = activeProject?.GetSettings();
-
-			//// Injecting custom type and icon for the project
-			//var projectSettings = settings?.GetSettingsGroup<ProjectSettings>();
-			//if (projectSettings != null)
-			//{
-			//	projectSettings.ProjectOrigin = "Example project type";
-			//	projectSettings.ProjectIconPath =
-			//		"icon path"; //@"C:\Repository\AppStoreApplications\LingotekTMS\LingotekTMS\Resources\icon.ico";
-			//}
-
-			//activeProject?.UpdateSettings(settings);
-			//activeProject?.Save();
-			//projectsController?.RefreshProjects();
 		}
 	}
 }

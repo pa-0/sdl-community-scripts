@@ -41,13 +41,14 @@ namespace ProjectController
 			var eventAggregator = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
 			var projectsController = SdlTradosStudio.Application.GetController<ProjectsController>();
 			var activeProject = projectsController?.CurrentProject;
-			var targetLanguages = activeProject?.GetProjectInfo().TargetLanguages;
-			if (targetLanguages?.Length >= 2)
-			{
-				eventAggregator.Publish(new OpenProjectForSelectedLanguageEvent(activeProject, targetLanguages[1]));
-				//to open just a project without target language
-				//eventAggregator.Publish(new OpenProjectForSelectedLanguageEvent(activeProject));
-			}
+			eventAggregator.Publish(new ChangeSourceContentSettingsEvent(activeProject,false,false,true));
+			//var targetLanguages = activeProject?.GetProjectInfo().TargetLanguages;
+			//if (targetLanguages?.Length >= 2)
+			//{
+			//	eventAggregator.Publish(new OpenProjectForSelectedLanguageEvent(activeProject, targetLanguages[1]));
+			//	//to open just a project without target language
+			//	//eventAggregator.Publish(new OpenProjectForSelectedLanguageEvent(activeProject));
+			//}
 		}
 	}
 }

@@ -5,10 +5,11 @@ using Sdl.Community.projectAnonymizer.Batch_Task;
 using Sdl.Community.projectAnonymizer.Helpers;
 using Sdl.Community.projectAnonymizer.Process_Xliff;
 using Sdl.Desktop.IntegrationApi;
+using Sdl.Desktop.IntegrationApi.Interfaces;
 
 namespace Sdl.Community.projectAnonymizer.Ui
 {
-	public partial class DecryptSettingsControl : UserControl, ISettingsAware<AnonymizerSettings>
+	public partial class DecryptSettingsControl : UserControl, IUISettingsControl, ISettingsAware<AnonymizerSettings>
 	{
 		public DecryptSettingsControl()
 		{
@@ -16,7 +17,7 @@ namespace Sdl.Community.projectAnonymizer.Ui
 			Timer.Tick += EncryptionBox_UserStoppedTyping;
 			decryptionBox.TextChanged += (t, e) => StartSearchTimer();
 		}
-
+		
 		public AnonymizerSettings Settings { get; set; }
 
 		public string EncryptionKey

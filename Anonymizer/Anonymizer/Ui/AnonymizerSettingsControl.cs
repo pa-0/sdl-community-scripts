@@ -10,10 +10,11 @@ using Sdl.Community.projectAnonymizer.Models;
 using Sdl.Community.projectAnonymizer.Process_Xliff;
 using Sdl.Community.ProjectAnonymizer;
 using Sdl.Desktop.IntegrationApi;
+using Sdl.Desktop.IntegrationApi.Interfaces;
 
 namespace Sdl.Community.projectAnonymizer.Ui
 {
-	public partial class AnonymizerSettingsControl : UserControl, ISettingsAware<AnonymizerSettings>
+	public partial class AnonymizerSettingsControl : UserControl,IUISettingsControl,ISettingsAware<AnonymizerSettings>
 	{
 		private BindingList<RegexPattern> regexPatterns;
 

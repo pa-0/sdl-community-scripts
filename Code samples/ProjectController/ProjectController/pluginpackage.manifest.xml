@@ -4,5 +4,8 @@
   <Version>1.0</Version>
   <Description>Plugin description</Description>
   <Author></Author>
+	<Include>
+		<File>System.Reactive.dll</File>
+	</Include>
   <RequiredProduct name="SDLTradosStudio" minversion="15.0" />
 </PluginPackage>

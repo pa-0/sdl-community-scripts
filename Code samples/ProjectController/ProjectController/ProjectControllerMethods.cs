@@ -6,6 +6,7 @@ using Sdl.Desktop.IntegrationApi;
 using Sdl.Desktop.IntegrationApi.DefaultLocations;
 using Sdl.Desktop.IntegrationApi.Extensions;
 using Sdl.Desktop.IntegrationApi.Interfaces;
+using Sdl.ProjectAutomation.Core;
 using Sdl.ProjectAutomation.Settings;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
 using Sdl.TranslationStudioAutomation.IntegrationApi.Events;
@@ -45,6 +46,10 @@ namespace ProjectController
 
 			//var projectsController = SdlTradosStudio.Application.GetController<ProjectsController>();
 			//var activeProject = projectsController?.CurrentProject;
+
+			// Set the ProjectOrigin using the current project and the ProjectOrigin's name, eg: "Star Transit" (this property will update the project type in Studio)
+			//eventAggregator.Publish(new AddProjectOriginEvent(activeProject, "Star Transit"));
+
 			//var settings=activeProject?.GetSettings();
 			//var tmSettings = settings.GetSettingsGroup<TranslationMemorySettings>();
 			//tmSettings.AlignmentPenalty.Value = 10;

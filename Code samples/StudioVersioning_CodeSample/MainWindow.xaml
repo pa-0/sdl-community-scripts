@@ -1,0 +1,35 @@
+﻿<Window x:Class="StudioVersioning_CodeSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudioVersioning_CodeSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<Grid>
+		<Button Content="Click to get the version" Click="Button_Click" HorizontalAlignment="Left" Margin="30,26,0,0" VerticalAlignment="Top" Width="150"/>
+		<Label Content="Executable version:" HorizontalAlignment="Left" Margin="30,75,0,0" VerticalAlignment="Top"/>
+		<TextBox Name="ExecutableVersion_TxtBox" HorizontalAlignment="Left" Height="23" Margin="158,79,0,0" TextWrapping="Wrap" Text="Executable version:" VerticalAlignment="Top"/>
+
+		<Label Content="Studio documents folder name:" HorizontalAlignment="Left" Margin="30,103,0,0" VerticalAlignment="Top"/>
+		<TextBox Name="StudioDocumentsFolderName_TxtBox" HorizontalAlignment="Left" Height="23" Margin="207,107,0,0" TextWrapping="Wrap" Text="StudioDocumentsFolderName version:" VerticalAlignment="Top" />
+
+		<Label Content="Studio short version:" HorizontalAlignment="Left" Margin="30,140,0,0" VerticalAlignment="Top"/>
+		<TextBox Name="StudioShortVersion_TxtBox" HorizontalAlignment="Left" Height="23" Margin="150,144,0,0" TextWrapping="Wrap" Text="Studio short version:" VerticalAlignment="Top" />
+
+		<Label Content="Installed path:" HorizontalAlignment="Left" Margin="30,171,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.519,-0.482"/>
+		<TextBox Name="InstalledPath_TxtBox" HorizontalAlignment="Left" Height="23" Margin="125,175,0,0" TextWrapping="Wrap" Text="Installed path:" VerticalAlignment="Top" />
+
+		<Label Content="Public version:" HorizontalAlignment="Left" Margin="30,199,0,0" VerticalAlignment="Top"/>
+		<TextBox Name="PublicVersion_TxtBox" HorizontalAlignment="Left" Height="23" Margin="125,203,0,0" TextWrapping="Wrap" Text="Public version:" VerticalAlignment="Top" />
+
+		<Label Content="Version:" HorizontalAlignment="Left" Margin="30,227,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.555,0.787"/>
+		<TextBox Name="Version_TxtBox" HorizontalAlignment="Left" Height="23" Margin="125,231,0,0" TextWrapping="Wrap" Text="Version:" VerticalAlignment="Top" />
+
+		<Label Content="Edition: " HorizontalAlignment="Left" Margin="30,258,0,0" VerticalAlignment="Top"/>
+		<TextBox Name="Edition_TxtBox" HorizontalAlignment="Left" Height="23" Margin="125,262,0,0" TextWrapping="Wrap" Text="Edition" VerticalAlignment="Top" RenderTransformOrigin="0.266,1.65" />
+		
+		<Button Content="Click to display all installed Studio Versions" Click="Button_Click_1" HorizontalAlignment="Left" Margin="494,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.093,1.01" Width="274"/>
+		<ListBox Name ="InstalledStudioVersions_ListBox" HorizontalAlignment="Left" Height="232" Margin="494,71,0,0" VerticalAlignment="Top" Width="274"/>
+	</Grid>
+</Window>

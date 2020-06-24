@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Sdl.Versioning">
-      <HintPath>..\..\..\VSTS_Repo\TradosStudio\src\Sdl\Versioning\obj\Debug\Sdl.Versioning.dll</HintPath>
+      <HintPath>..\..\..\..\Code\VSTS\Bin\Mixed Platforms\Debug\Sdl.Versioning.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

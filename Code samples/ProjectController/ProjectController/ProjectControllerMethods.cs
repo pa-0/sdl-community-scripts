@@ -41,7 +41,11 @@ namespace ProjectController
 		{
 			//projects controler open file view for selected language
 			var eventAggregator = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
-			eventAggregator.GetEvent<SegmentsMergedEvent>().Subscribe(SegmentsMerged);
+
+			eventAggregator.GetEvent<CommentsChangedEvent>().Subscribe(CommentsChanged);
+
+
+			//eventAggregator.GetEvent<SegmentsMergedEvent>().Subscribe(SegmentsMerged);
 			//eventAggregator.GetEvent<SegmentSplitEvent>().Subscribe(SegmentSplit);
 
 			//var projectsController = SdlTradosStudio.Application.GetController<ProjectsController>();
@@ -72,6 +76,11 @@ namespace ProjectController
 		//	var secondNewSegmentId = e.SecondNewSegmentId;
 		//	var paragraphUnit = e.ParagraphUnitId;
 		//}
+
+		private void CommentsChanged(CommentsChangedEvent e)
+		{
+
+		}
 
 		private void SegmentsMerged(SegmentsMergedEvent e)
 		{

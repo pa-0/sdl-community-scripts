@@ -10,9 +10,30 @@ using Sdl.ProjectAutomation.Core;
 using Sdl.ProjectAutomation.Settings;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
 using Sdl.TranslationStudioAutomation.IntegrationApi.Events;
+using Sdl.TranslationStudioAutomation.IntegrationApi.Presentation.DefaultLocations;
 
 namespace ProjectController
 {
+
+	[Action("DeleteCommentsAction", Name = "DeleteComments", Icon = "")]
+	[ActionLayout(typeof(TranslationStudioDefaultContextMenus.EditorDocumentContextMenuLocation), 10, DisplayType.Large)]
+	class DeleteCommentSample : AbstractAction
+	{
+		protected override void Execute()
+		{
+			var editorController = SdlTradosStudio.Application.GetController<EditorController>();
+			var activeDocument = editorController?.ActiveDocument;
+			if (activeDocument != null)
+			{
+				var segmentPairs = activeDocument.SegmentPairs;
+				foreach (var segmentPair in segmentPairs)
+				{
+					activeDocument.DeleteAllCommentsOnSegment(segmentPair);
+				}
+			}
+		}
+	}
+
 	[ApplicationInitializer]
 	public class ProjectControllerMethods : IApplicationInitializer
 	{

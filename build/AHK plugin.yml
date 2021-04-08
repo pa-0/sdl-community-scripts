@@ -47,20 +47,5 @@ steps:
     runBranch: '$(StudioBranch)'
     tags: 'Package'
 
-
-- task: NuGetToolInstaller@1
-  displayName: 'Update nuget'
-
-- task: NuGetCommand@2
-  displayName: 'NuGet restore'
-  inputs:
-    restoreSolution: '$(solution)'
-    vstsFeed: 'af66e256-9c46-4fba-ad75-09bf110ec1cc'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
+- template: jobs/build-sdlplugin.yml
 - template: jobs/publish-build-artifact-task.yml

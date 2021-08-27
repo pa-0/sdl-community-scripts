@@ -1,4 +1,5 @@
-﻿using Sdl.Desktop.IntegrationApi;
+﻿using System;
+using Sdl.Desktop.IntegrationApi;
 using Sdl.Desktop.IntegrationApi.DefaultLocations;
 using Sdl.Desktop.IntegrationApi.Extensions;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
@@ -26,7 +27,9 @@ namespace ApiChangesSample
 			var eventAggregator = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
 			var projectsController = SdlTradosStudio.Application.GetController<ProjectsController>();
 			//OpenProjectForLanguage(eventAggregator);
-			ChangeSourceContentSettings(eventAggregator, projectsController.CurrentProject);
+			//ChangeSourceContentSettings(eventAggregator, projectsController.CurrentProject);
+			//SubscribeToSplitEvent(eventAggregator);
+			SubscribeToCommentsEvent(eventAggregator);
 		}
 
 		private void OpenProjectForLanguage(IStudioEventAggregator eventAggregator)
@@ -41,6 +44,43 @@ namespace ApiChangesSample
 		private void ChangeSourceContentSettings(IStudioEventAggregator eventAggregator, FileBasedProject activeProject)
 		{
 			eventAggregator.Publish(new ChangeSourceContentSettingsEvent(activeProject, true, true,true));
+		}
+
+		private void SubscribeToSplitEvent(IStudioEventAggregator eventAggregator)
+		{
+			eventAggregator.GetEvent<SegmentSplitEvent>().Subscribe(SegmentSplitDetails);
+		}
+
+		private void SubscribeToMergedEvent(IStudioEventAggregator eventAggregator)
+		{
+			eventAggregator.GetEvent<SegmentsMergedEvent>().Subscribe(SegmentsMergedDetails);
+		}
+
+		private void SubscribeToCommentsEvent(IStudioEventAggregator eventAggregator)
+		{
+			eventAggregator.GetEvent<CommentsChangedEvent>().Subscribe(CommentsChanged);
+		}
+
+		private void CommentsChanged(CommentsChangedEvent e)
+		{
+
+		}
+
+		private void SegmentsMergedDetails(SegmentsMergedEvent e)
+		{
+			var document = e.Document;
+			var paragraphUnit = e.ParagraphUnitId;
+			var newSegmentId = e.NewSegmentId;
+			var oldSegmentIds = e.OldSegmentIds;
+		}
+
+		private void SegmentSplitDetails(SegmentSplitEvent e)
+		{
+			var document = e.Document;
+			var originalSegId = e.OriginalSegmentId;
+			var firstNewSegmentId = e.FirstNewSegmentId;
+			var secondNewSegmentId = e.SecondNewSegmentId;
+			var paragraphUnit = e.ParagraphUnitId;
 		}
 	}
 

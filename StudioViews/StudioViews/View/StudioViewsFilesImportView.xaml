@@ -12,7 +12,7 @@
         xmlns:behaviours="clr-namespace:Sdl.Community.StudioViews.Behaviours"
         xmlns:viewModel="clr-namespace:Sdl.Community.StudioViews.ViewModel"
         xmlns:controls="clr-namespace:Sdl.Community.StudioViews.Controls"
-        xmlns:controls1="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:generic="clr-namespace:Sdl.Community.StudioViews.Themes.Generic"
         xmlns:model="clr-namespace:Sdl.Community.StudioViews.Model"
 		Icon="../Resources/import.ico"
         mc:Ignorable="d"
@@ -30,9 +30,10 @@
 				<ResourceDictionary Source="pack://application:,,,/Sdl.Community.StudioViews;component/Styles/TextBoxStyle.xaml"/>
 				<ResourceDictionary Source="pack://application:,,,/Sdl.Community.StudioViews;component/Styles/TextBlockStyle.xaml"/>
 				<ResourceDictionary Source="pack://application:,,,/Sdl.Community.StudioViews;component/Styles/NumberUpDown.xaml"/>
-				<ResourceDictionary Source="pack://application:,,,/Sdl.Community.StudioViews;component/Styles/ProgressRingAsteriskStyle.xaml"/>
 				<ResourceDictionary Source="pack://application:,,,/Sdl.Community.StudioViews;component/Styles/DataGridStyle.xaml"/>
+				<ResourceDictionary Source="pack://application:,,,/Sdl.Community.StudioViews;component/Styles/CustomProgressRing.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
+			<BooleanToVisibilityConverter x:Key="BoolToVisConv" />
 
 			<Style TargetType="{x:Type Window}">
 				<Setter Property="FontFamily" Value="Segoe UI" />
@@ -43,13 +44,13 @@
 	</Window.Resources>
 	<Grid>
 
-		<controls1:ProgressRing 
-			Style="{StaticResource ProgressRingAsterisk}"
+		<generic:CustomProgressRing 
+			Style="{StaticResource Sdl.CustomProgressRing.Normal}"
+			x:Name="ProgressRing"
+			Margin="20"
 			Height="80"
-			IsActive="{Binding ProgressIsVisible, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"			    
-			Canvas.ZIndex="110"   		                      
-			IsLarge="True" 
-			Margin="20" />
+			Visibility="{Binding ProgressIsVisible, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisConv}}"			    
+			Canvas.ZIndex="110"/>
 
 		<Grid AllowDrop="True" Margin="5" IsEnabled="{Binding IsEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 			<Grid.RowDefinitions>

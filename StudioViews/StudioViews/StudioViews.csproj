@@ -5,6 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{97D7CCCE-0311-4027-9BC0-E5ACC4EC7C48}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sdl.Community.StudioViews</RootNamespace>
@@ -37,25 +38,22 @@
     <AssemblyOriginatorKeyFile>SdlCommunity.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MahApps.Metro">
-      <HintPath>$(ProgramFiles)\SDL\SDL Trados Studio\Studio16\MahApps.Metro.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="PresentationFramework.Aero" />
-    <Reference Include="Sdl.Community.Toolkit.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=15236fec901153ed, processorArchitecture=MSIL">
+    <Reference Include="Sdl.Community.Toolkit.Core">
       <HintPath>..\packages\Sdl.Community.Toolkit.Core.3.0.0\lib\net45\Sdl.Community.Toolkit.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Sdl.Community.Toolkit.LanguagePlatform, Version=3.0.0.0, Culture=neutral, PublicKeyToken=15236fec901153ed, processorArchitecture=MSIL">
+    <Reference Include="Sdl.Community.Toolkit.LanguagePlatform">
       <HintPath>..\packages\Sdl.Community.Toolkit.LanguagePlatform.3.0.0\lib\net45\Sdl.Community.Toolkit.LanguagePlatform.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.Core.Globalization">
       <HintPath>$(ProgramFiles)\SDL\SDL Trados Studio\Studio16\Sdl.Core.Globalization.dll</HintPath>
     </Reference>
-    <Reference Include="Sdl.Core.PluginFramework, Version=1.8.0.0, Culture=neutral, PublicKeyToken=c28cdb26c445c888, processorArchitecture=MSIL">
+    <Reference Include="Sdl.Core.PluginFramework">
       <HintPath>..\packages\Sdl.Core.PluginFramework.2.0.0\lib\net45\Sdl.Core.PluginFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Sdl.Core.PluginFramework.PackageSupport, Version=1.8.0.0, Culture=neutral, PublicKeyToken=c28cdb26c445c888, processorArchitecture=MSIL">
+    <Reference Include="Sdl.Core.PluginFramework.PackageSupport">
       <HintPath>..\packages\Sdl.Core.PluginFramework.2.0.0\lib\net45\Sdl.Core.PluginFramework.PackageSupport.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.Core.Settings">
@@ -183,6 +181,7 @@
     <Compile Include="TellMe\CommunityAppStoreForumAction.cs" />
     <Compile Include="TellMe\CommunityWikiAction.cs" />
     <Compile Include="TellMe\TellMeProvider.cs" />
+    <Compile Include="Themes\Generic\CustomProgressRing.cs" />
     <Compile Include="ViewModel\BaseModel.cs" />
     <Compile Include="Model\ParagraphUnitContext.cs" />
     <Compile Include="PluginResources.Designer.cs">
@@ -252,11 +251,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Styles\DataGridStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Styles\CustomProgressRing.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\ProgressRingAsteriskStyle.xaml">
+    <Page Include="Styles\DataGridStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -307,6 +306,14 @@
     <Page Include="Styles\TextBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic\CustomProgressRing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MessageBoxView.xaml">
       <Generator>MSBuild:Compile</Generator>

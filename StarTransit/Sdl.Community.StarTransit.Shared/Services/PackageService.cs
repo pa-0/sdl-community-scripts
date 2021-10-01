@@ -52,7 +52,10 @@ namespace Sdl.Community.StarTransit.Shared.Services
 				var entryName = string.Empty;
 				if (File.Exists(packagePath))
 				{
-					using (var archive = ZipFile.OpenRead(packagePath))
+					var encoding = Encoding.GetEncoding(850);
+					//using (var archive = ZipFile.OpenRead(packagePath))
+					//{
+					using (var archive = ZipFile.Open(packagePath, ZipArchiveMode.Read, encoding))
 					{
 						foreach (var entry in archive.Entries)
 						{
@@ -155,13 +158,22 @@ namespace Sdl.Community.StarTransit.Shared.Services
 			{
 				foreach (var file in files)
 				{
+					//TODO: Encodeaza numele folosing codu de mai sus (vezi model pe return package)
 					var splitedValues = file.Value.Split('|');
 					var fileName = splitedValues[splitedValues.Length - 3];
-					var fileExists = fileNames.Any(f => f.Equals(fileName));
+					var nameBytes = Encoding.Default.GetBytes(fileName);
+					
+					var encodedFileName = Encoding.GetEncoding(850).GetString(nameBytes);
+					var fileExists = fileNames.Any(f => f.Equals(encodedFileName));
 					if (!fileExists)
 					{
-						fileNames.Add(fileName);
+						fileNames.Add(encodedFileName);
 					}
+					//var fileExists = fileNames.Any(f => f.Equals(fileName));
+					//if (!fileExists)
+					//{
+					//	fileNames.Add(fileName);
+					//}
 				}
 			}
 			else

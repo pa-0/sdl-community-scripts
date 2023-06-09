@@ -313,7 +313,7 @@ namespace MicrosoftTranslatorProvider.ViewModel
 
 				bool.TryParse(genericCredentials["Persist-ApiKey"], out var persistApiKey);
 				_providerControlViewModel.PersistMicrosoftKey = persistApiKey;
-				_providerControlViewModel.ClientID = persistApiKey ? genericCredentials["API-Key"] : string.Empty;
+				_providerControlViewModel.ClientID =  genericCredentials["API-Key"];
 
 				bool.TryParse(genericCredentials["Use-PrivateEndpoint"], out var usePrivateEndpoint);
 				bool.TryParse(genericCredentials["Persist-PrivateEndpoint"], out var persistsPrivateEndpoint);
@@ -349,9 +349,7 @@ namespace MicrosoftTranslatorProvider.ViewModel
 			var currentCredentials = new GenericCredentials("mstpusername", "mstppassword")
 			{
 				["Persist-ApiKey"] = persistApiKey.ToString(),
-				["API-Key"] = persistApiKey
-							? _providerControlViewModel.ClientID
-							: string.Empty,
+				["API-Key"] = _providerControlViewModel.ClientID,
 
 				["Use-PrivateEndpoint"] = usePrivateEndpoint.ToString(),
 				["Persist-PrivateEndpoint"] = _providerControlViewModel.PersistPrivateEndpoint.ToString(),

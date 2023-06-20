@@ -65,7 +65,7 @@ namespace Sdl.Community.StudioViews.Services
 				{
 					segmentPairInfo.SourceWordCounts = SegmentPairProcessor.GetSegmentPairInfo(segmentPair)?.SourceWordCounts;
 				}
-				catch
+				catch(Exception ex)
 				{
 					// catch all; ignore
 				}

@@ -662,7 +662,11 @@ namespace Sdl.Community.StudioViews.ViewModel
 				    && !excludeFilterIds.Exists(a => a == status) 
 				    && !excludeFilterIds.Exists(a => a == match))
 				{
-					splitWordCount += segmentPairInfo.SourceWordCounts.Words;
+					if(segmentPairInfo.SourceWordCounts !=null)
+					{
+						splitWordCount += segmentPairInfo.SourceWordCounts.Words;
+					}
+					
 				}
 
 				if (splitWordCount >= maxWordCount)
@@ -723,7 +727,11 @@ namespace Sdl.Community.StudioViews.ViewModel
 				    && !excludeFilterIds.Exists(a => a == status)
 				    && !excludeFilterIds.Exists(a => a == match))
 				{
-					splitWordCount += segmentPairInfo.SourceWordCounts.Words;
+					if(segmentPairInfo.SourceWordCounts !=null)
+					{
+						splitWordCount += segmentPairInfo.SourceWordCounts.Words;
+					}
+				
 				}
 			}
 

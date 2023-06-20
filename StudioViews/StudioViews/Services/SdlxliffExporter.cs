@@ -26,12 +26,11 @@ namespace Sdl.Community.StudioViews.Services
 
 			converter.Parse();
 
-
 			var outputFile = new OutputFile
 			{
 				FilePath = filePathOutput,
 				SegmentCount = contentWriter.SegmentPairInfos.Count,
-				WordCount = contentWriter.SegmentPairInfos.Sum(a => a.SourceWordCounts.Words)
+				WordCount = contentWriter.SegmentPairInfos.Where(x=>x.SourceWordCounts !=null).Sum(a => a.SourceWordCounts.Words)
 			};
 
 

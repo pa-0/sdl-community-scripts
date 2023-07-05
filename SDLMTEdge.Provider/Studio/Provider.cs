@@ -2,9 +2,11 @@ using Newtonsoft.Json;
 using NLog;
 using Sdl.Community.MTEdge.Provider.Helpers;
 using Sdl.Community.MTEdge.Provider.Model;
+using Sdl.Core.Globalization.LanguageRegistry;
 using Sdl.LanguagePlatform.Core;
 using Sdl.LanguagePlatform.TranslationMemoryApi;
 using System;
+using System.Globalization;
 using System.Linq;
 
 namespace Sdl.Community.MTEdge.Provider.Studio
@@ -66,18 +68,18 @@ namespace Sdl.Community.MTEdge.Provider.Studio
         public bool SupportsLanguageDirection(LanguagePair languageDirection)
         {
             // MtEdge doesn't have ptb as source language, we need to map it to por
-            if (languageDirection.SourceCulture.ToMTEdgeCode().Equals("ptb"))
+            if (LanguageRegistryApi.Instance.GetLanguage(languageDirection.SourceCulture).CultureInfo.ToMTEdgeCode().Equals("ptb"))
             {
                 return SDLMTEdgeTranslatorHelper
                       .GetLanguagePairs(Options)
                       .Any(lp => lp.SourceLanguageId.Equals("por")
-                              && languageDirection.TargetCulture.ToMTEdgeCode().Equals(lp.TargetLanguageId));
+                              && LanguageRegistryApi.Instance.GetLanguage(languageDirection.SourceCulture).CultureInfo.ToMTEdgeCode().Equals(lp.TargetLanguageId));
             }
 
             return SDLMTEdgeTranslatorHelper
                   .GetLanguagePairs(Options)
-                  .Any(lp => languageDirection.SourceCulture.ToMTEdgeCode().Equals(lp.SourceLanguageId)
-                          && languageDirection.TargetCulture.ToMTEdgeCode().Equals(lp.TargetLanguageId));
+                  .Any(lp => LanguageRegistryApi.Instance.GetLanguage(languageDirection.SourceCulture).CultureInfo.ToMTEdgeCode().Equals(lp.SourceLanguageId)
+                          && LanguageRegistryApi.Instance.GetLanguage(languageDirection.SourceCulture).CultureInfo.ToMTEdgeCode().Equals(lp.TargetLanguageId));
         }
 
         public ITranslationProviderLanguageDirection GetLanguageDirection(LanguagePair languageDirection)

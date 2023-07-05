@@ -33,13 +33,17 @@ namespace Sdl.Community.MTEdge.Provider.Studio
 
         public ITranslationProvider TranslationProvider => _translationProvider;
 
-        /// <summary>
-        /// Used to translate a single segment.
-        /// </summary>
-        /// <param name="settings"></param>
-        /// <param name="segment"></param>
-        /// <returns></returns>
-        public SearchResults SearchSegment(SearchSettings settings, Segment segment)
+		CultureCode ITranslationProviderLanguageDirection.SourceLanguage => _languagePair.SourceCulture;
+
+		CultureCode ITranslationProviderLanguageDirection.TargetLanguage => _languagePair.TargetCulture;
+
+		/// <summary>
+		/// Used to translate a single segment.
+		/// </summary>
+		/// <param name="settings"></param>
+		/// <param name="segment"></param>
+		/// <returns></returns>
+		public SearchResults SearchSegment(SearchSettings settings, Segment segment)
 		{
 			 
 

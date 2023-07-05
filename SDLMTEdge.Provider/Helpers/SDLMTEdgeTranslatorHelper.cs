@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using NLog;
 using Sdl.Community.MTEdge.Provider.Model;
 using Sdl.Community.MTEdge.Provider.XliffConverter.Converter;
+using Sdl.Core.Globalization.LanguageRegistry;
 using Sdl.LanguagePlatform.Core;
 using Sdl.LanguagePlatform.TranslationMemoryApi;
 
@@ -92,8 +93,8 @@ namespace Sdl.Community.MTEdge.Provider.Helpers
             {
                 queryString = new Dictionary<string, string>
                 {
-                    { "sourceLanguageId", languageDirection.SourceCulture.ToMTEdgeCode() },
-                    { "targetLanguageId", languageDirection.TargetCulture.ToMTEdgeCode() },
+                    { "sourceLanguageId", LanguageRegistryApi.Instance.GetLanguage(languageDirection.SourceCulture).CultureInfo.ToMTEdgeCode() },
+                    { "targetLanguageId", LanguageRegistryApi.Instance.GetLanguage(languageDirection.SourceCulture).CultureInfo.ToMTEdgeCode() },
                     { "text", encodedInput }
                 };
             }

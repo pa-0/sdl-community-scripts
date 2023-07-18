@@ -59,16 +59,21 @@
 			</Grid.RowDefinitions>
 			<!-- BORDER CONTROL -->
 			<styles:WindowsControl Grid.Row="0"
-								   Background="White" />
+								   Background="White"/>
 
 			<StackPanel Grid.Row="2"
 						Margin="24 48 24 0">
-				<ComboBox ItemsSource="{Binding Endpoints}"
-						  SelectedItem="{Binding SelectedEndpoint}"
-						  Style="{StaticResource Sdl.ComboBox.Generic.Style}"
+				<GroupBox Header="Authentication Type"
+						  Style="{StaticResource DefaultGroupBox}"
 						  Visibility="{Binding CanSwitchProvider, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InvertableBooleanToVisibilityConverter}, ConverterParameter=Inverted}"
-						  Margin="0 0 0 12" />
-				<ContentControl Content="{Binding SelectedView.ViewModel}" />
+						  Focusable="True">
+					<ComboBox ItemsSource="{Binding Endpoints}"
+							  SelectedItem="{Binding SelectedEndpoint}"
+							  Style="{StaticResource Sdl.ComboBox.Generic.Style}"
+							  Margin="12 4" />
+				</GroupBox>
+				<ContentControl Content="{Binding SelectedView.ViewModel}" 
+								Focusable="False"/>
 			</StackPanel>
 
 

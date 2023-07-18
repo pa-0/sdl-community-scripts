@@ -21,15 +21,17 @@ namespace MicrosoftTranslatorProvider.ViewModel
 		private List<RegionSubscription> _regions;
 		private RegionSubscription _selectedRegion;
 
+		private bool _editProvider;
 		private bool _persistMicrosoftKey;
 		private string _apiKey;
 
 		private ICommand _learnMoreCommand;
 
-		public ProviderViewModel(ITranslationOptions options, LanguagePair[] languagePairs)
+		public ProviderViewModel(ITranslationOptions options, LanguagePair[] languagePairs, bool editProvider = false)
 		{
 			_options = options;
 			_languagePairs = languagePairs;
+			_editProvider = editProvider;
 			InitializeComponent();
 			CreateMapping();
 		}
@@ -101,6 +103,17 @@ namespace MicrosoftTranslatorProvider.ViewModel
 			{
 				if (_selectedLanguageMapping == value) return;
 				_selectedLanguageMapping = value;
+				OnPropertyChanged();
+			}
+		}
+
+		public bool EditProvider
+		{
+			get => _editProvider;
+			set
+			{
+				if (_editProvider == value) return;
+				_editProvider = value;
 				OnPropertyChanged();
 			}
 		}

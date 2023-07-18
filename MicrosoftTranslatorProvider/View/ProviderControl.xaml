@@ -39,6 +39,7 @@
 		<StackPanel>
 			<GroupBox Padding="12"
 					  Header="Provider connection"
+					  Visibility="{Binding EditProvider, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InvertableBooleanToVisibilityConverter}, ConverterParameter=Inverted}"
 					  Style="{StaticResource DefaultGroupBox}"
 					  Margin="0 0 0 8">
 				<StackPanel>
